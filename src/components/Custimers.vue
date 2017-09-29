@@ -42,6 +42,8 @@ export default {
       this.alert = this.$route.query.alert
     }
     this.fetchCustomers()
+    this.CookieData()
+    this.Date()
   },
   updated(){
     this.fetchCustomers()
@@ -50,6 +52,18 @@ export default {
     Alert
   },
   methods:{
+    Date(){
+      var date = new Date()
+      console.log(date)
+      console.log(date.setDate(date.getDate()+1))
+    },
+    CookieData(){
+      console.log(this.$cookie.get('test'))
+      if(this.$cookie.get('test') == null){
+        alert("未登录")
+        this.$router.push('/about')
+      }
+    },
     filterBy(customers,value){
         return customers.filter(function(customer){
           return customer.name.match(value)
@@ -58,7 +72,7 @@ export default {
     fetchCustomers(){
       this.$http.get("http://localhost:3000/users")
         .then((res)=>{
-          this.customers = res.body
+          this.customers = res.data
         })
         .catch((error)=>{
           console.log(error)

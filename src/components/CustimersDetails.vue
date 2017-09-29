@@ -58,7 +58,6 @@ export default {
       fatchCustomers(id){
           this.$http.get("http://localhost:3000/users/"+id)
                 .then((res)=>{
-                    console.log(res)
                     this.customer = res.body
                 })
                 .catch((error)=>{
@@ -66,9 +65,9 @@ export default {
                 })
       },
       deleteCustomer(id){
+          console.log(id)
            this.$http.delete("http://localhost:3000/users/"+id)
                 .then((res)=>{
-                    console.log(res)
          this.$router.push({path:'/',query:{alert:"用户删除成功！"}})
 
                 })

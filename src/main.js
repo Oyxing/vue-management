@@ -7,12 +7,17 @@ import App from './App'
 import Customers from '@/components/Custimers'
 import About from '@/components/About'
 import Edit from '@/components/Edit'
-
+import VueCookie from 'vue-cookie'
 import Add from '@/components/Add'
 import CustimersDetails from '@/components/CustimersDetails'
+
+import VueAxios from 'vue-axios'
+import Axios from 'axios'
+Vue.use(VueAxios,Axios)
 Vue.config.productionTip = false
 Vue.use(VueRouter)
-Vue.use(VueResource)
+Vue.use(VueCookie)
+// Vue.use(VueResource)
 /* eslint-disable no-new */
 const router = new VueRouter({
   mode:"history",
@@ -49,10 +54,18 @@ new Vue({
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><router-link to="/add">添加用户</router-link></li>
           </ul>
+          <ul class="nav navbar-right">
+            <li class="active"><button class="btn" @click="Out()">退出</button></li>
+          </ul>
           </div><!--/.nav-collapse -->
       </div>
     </nav>
       <router-view></router-view>
     </div>
-    `
+    `,
+    methods:{
+      Out(){
+          this.$cookie.delete('test')
+      }
+    }
 }).$mount("#app")

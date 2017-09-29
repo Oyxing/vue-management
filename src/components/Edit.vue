@@ -91,7 +91,6 @@ export default {
         }
         this.$http.put("http://localhost:3000/users/"+this.$route.params.id,updataCustomer)
             .then((res)=>{
-              console.log(res)
               this.$router.push({path:'/',query:{alert:"用户信息更新成功！"}})
             })
             .catch((error)=>{

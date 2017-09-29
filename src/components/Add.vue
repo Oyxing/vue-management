@@ -67,13 +67,13 @@ export default {
             e.preventDefault();
       }else{
         let newCustomer = {
-          name:this.customer.name,
-          phone:this.customer.phone,
-          email:this.customer.email,
-          education:this.customer.education,
-          graduationschool:this.customer.graduationschool,
-          profession:this.customer.profession,
-          profile:this.customer.profile
+            name:this.customer.name,
+            phone:this.customer.phone,
+            email:this.customer.email,
+            education:this.customer.education,
+            graduationschool:this.customer.graduationschool,
+            profession:this.customer.profession,
+            profile:this.customer.profile
         }
         this.$http.post("http://localhost:3000/users",newCustomer)
             .then((res)=>{
